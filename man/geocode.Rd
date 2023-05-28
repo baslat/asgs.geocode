@@ -10,13 +10,16 @@ geocode(address)
 \item{address}{The address to geocode}
 }
 \value{
-A \code{sf} object containing the address and its coordinates
+A one-row \code{\link[sf:sf]{sf::sf()}} object containing the address and its coordinates
 }
 \description{
-Geocode an address using ArcGIS
+This function geocodes an address using the ArcGIS API. The address is
+suffixed with the country code "AUS", and only the top match is returned. The
+more specific the address, the more likely the correct result will be
+returned.
 }
 \examples{
 \dontrun{
-geocode("Melbourne Town Hall")
+geocode(address = "Melbourne Town Hall")
 }
 }
