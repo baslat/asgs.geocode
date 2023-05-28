@@ -63,7 +63,7 @@ sa1
 #> 1               2 MULTIPOLYGON (((144.9686 -3...
 
 # Get the LGA (guess the layer)
-lga <- point_to_asgs(point, guess_geo(2016, "lga"))
+lga <- point_to_asgs(point, asgs_layer(2016, "lga"))
 #> Layer Type: Feature Layer
 #> Geometry Type: esriGeometryPolygon
 #> Service Coordinate Reference System: 3857
