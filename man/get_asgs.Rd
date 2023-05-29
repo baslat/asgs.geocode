@@ -4,7 +4,7 @@
 \alias{get_asgs}
 \title{Geocode a point to ASGS}
 \usage{
-get_asgs(.data, year, geo, layer = NULL)
+get_asgs(.data, year, geo)
 }
 \arguments{
 \item{.data}{(sf) The input data to geocode to ASGS}
@@ -20,7 +20,7 @@ code. View all available layers with \code{\link[=get_layers]{get_layers()}}.}
 an \code{\link[sf:sf]{sf::sf()}} object containing the ASGS geometry and details
 }
 \description{
-This function geocodes an \code{\link[sf:sf]{sf::sf()}} object to the Australian Statistical Geography Standard.
+This function geocodes an \code{\link[sf:sf]{sf::sf()}} object to the Australian Statistical Geography Standardf.
 }
 \examples{
 \dontrun{
