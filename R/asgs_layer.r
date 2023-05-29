@@ -1,7 +1,9 @@
 #' Return the ASGS layer ID
 #'
-#' @param year The year of the ASGS
-#' @param geo The geographic level (eg "sa1", "SUA")
+#' This.
+#'
+#' @param year (numeric) the year of the ASGS
+#' @param geo (character) the geographic level (eg "sa1", "SUA", "lga")
 #' @return The ID of the layer
 #' @export
 asgs_layer <- function(year, geo) {
