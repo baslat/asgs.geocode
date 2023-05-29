@@ -14,7 +14,7 @@ Get a data frame of the ABS ASGS layers available for geocoding.
 }
 \examples{
 layers <- get_layers()
-# What LGA years are available? 2016-2020!
+# What LGA years are available? 2016-2022!
 dplyr::filter(layers, geo == "lga")
 
 # What's available for 2018? LGA, CED and SED!
