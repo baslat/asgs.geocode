@@ -4,12 +4,12 @@
 \name{asgs.geocode-package}
 \alias{asgs.geocode}
 \alias{asgs.geocode-package}
-\title{asgs.geocode: What the Package Does (One Line, Title Case)}
+\title{asgs.geocode: Geocode to the Australian Statistical Geography Standard}
 \description{
-What the package does (one paragraph).
+The Australian Statistical Geography Standard (ASGS) is a hierarchical geographical classification used by the Australian Bureau of Statistics (ABS) to enable the publication of statistics that are comparable and spatially integrated. This package provides functions to geocode addresses, points and polygons to the ASGS.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Bas Latcham \email{bas@latcham.au} (\href{https://orcid.org/0000-0002-1733-7350}{ORCID})
 
 }
 \keyword{internal}

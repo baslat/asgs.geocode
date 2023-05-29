@@ -10,9 +10,14 @@ get_layers()
 A data frame of the ABS ASGS layers
 }
 \description{
-Get a data frame of the ABS ASGS layers
+Get a data frame of the ABS ASGS layers available for geocoding.
 }
 \examples{
-get_layers()
+layers <- get_layers()
+# What LGA years are available? 2016-2022!
+dplyr::filter(layers, geo == "lga")
+
+# What's available for 2018? LGA, CED and SED!
+dplyr::filter(layers, year == 2018)
 
 }
