@@ -34,36 +34,18 @@ library(asgs.geocode)
 address <- "Melbourne Town Hall, Melbourne"
 point <- geocode(address)
 point
-#> Simple feature collection with 1 feature and 1 field
+#> Simple feature collection with 1 feature and 5 fields
 #> Geometry type: POINT
 #> Dimension:     XY
 #> Bounding box:  xmin: 144.9666 ymin: -37.81506 xmax: 144.9666 ymax: -37.81506
 #> Geodetic CRS:  WGS 84
-#>                                                           address
-#> 1 Melbourne Town Hall, 100 Swanston St, Melbourne, Victoria, 3000
-#>                     geometry
-#> 1 POINT (144.9666 -37.81506)
+#>                                                           address candidate
+#> 1 Melbourne Town Hall, 100 Swanston St, Melbourne, Victoria, 3000         1
+#>   score match_status address_type                   geometry
+#> 1   100        match PointAddress POINT (144.9666 -37.81506)
 
-
-# Get the SA1 (layer 12)
-sa1 <- point_to_asgs(point, 12)
-#> Layer Type: Feature Layer
-#> Geometry Type: esriGeometryPolygon
-#> Service Coordinate Reference System: 3857
-#> Output Coordinate Reference System: 4326
-sa1
-#> Simple feature collection with 1 feature and 6 fields
-#> Geometry type: MULTIPOLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: 144.9661 ymin: -37.81745 xmax: 144.9699 ymax: -37.81378
-#> Geodetic CRS:  WGS 84
-#>   OBJECTID SA1_MAINCODE_2016 Shape_Length Shape_Area SA1_7DIGIT_2016
-#> 1    15095       20604112225      1468.25   129312.4         2112225
-#>   STATE_CODE_2016                          geoms
-#> 1               2 MULTIPOLYGON (((144.9686 -3...
-
-# Get the LGA (guess the layer)
-lga <- point_to_asgs(point, asgs_layer(2016, "lga"))
+# Get the LGA
+lga <- get_asgs(point, 2016, "lga")
 #> Layer Type: Feature Layer
 #> Geometry Type: esriGeometryPolygon
 #> Service Coordinate Reference System: 3857
@@ -74,8 +56,25 @@ lga
 #> Dimension:     XY
 #> Bounding box:  xmin: 144.8971 ymin: -37.85067 xmax: 144.9914 ymax: -37.77545
 #> Geodetic CRS:  WGS 84
-#>   OBJECTID LGA_CODE_2016 LGA_NAME_2016 Shape_Length Shape_Area
+#>   objectid lga_code_2016 lga_name_2016 shape_length shape_area
 #> 1      174         24600 Melbourne (C)     51750.21   59941687
-#>   LGA_CENSUSCODE_2016 AREA_ALBERS_SQKM                          geoms
+#>   lga_censuscode_2016 area_albers_sqkm                          geoms
 #> 1            LGA24600          37.3513 MULTIPOLYGON (((144.9027 -3...
+# See available year-geography layers
+layers <- get_layers()
+layers
+#> # A tibble: 61 × 6
+#>       id  year geo   name                description                       url  
+#>    <int> <dbl> <chr> <chr>               <chr>                             <chr>
+#>  1     0  2016 add   ASGS_2016_ADD_GEN   "Australian Drainage Divisions (… http…
+#>  2     1  2016 aus   ASGS_2016_AUS_GEN   ""                                http…
+#>  3     2  2016 ced   ASGS_2016_CED_GEN   "Commonwealth Electoral Division… http…
+#>  4     3  2016 dzn   ASGS_2016_DZN_GEN   ""                                http…
+#>  5     4  2016 gccsa ASGS_2016_GCCSA_GEN "Greater Capital City Statistica… http…
+#>  6     5  2016 iare  ASGS_2016_IARE_GEN  "Indigenous Areas are medium siz… http…
+#>  7     6  2016 iloc  ASGS_2016_ILOC_GEN  "Indigenous Locations (ILOCs) ar… http…
+#>  8     7  2016 ireg  ASGS_2016_IREG_GEN  "Indigenous Regions (IREGs) are … http…
+#>  9     8  2016 lga   ASGS_2016_LGA_GEN   "Local Government Areas (LGAs) a… http…
+#> 10     9  2016 mb    ASGS_2016_MB_GEN    "Mesh Blocks (MB) are the smalle… http…
+#> # ℹ 51 more rows
 ```
