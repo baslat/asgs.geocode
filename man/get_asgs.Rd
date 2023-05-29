@@ -12,9 +12,6 @@ get_asgs(.data, year, geo)
 \item{year}{(numeric) the year of the ASGS}
 
 \item{geo}{(character) the geographic level (eg "sa1", "SUA", "lga")}
-
-\item{layer}{(numeric; default = \code{NULL}) The layer to use if you know the
-code. View all available layers with \code{\link[=get_layers]{get_layers()}}.}
 }
 \value{
 an \code{\link[sf:sf]{sf::sf()}} object containing the ASGS geometry and details

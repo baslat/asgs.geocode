@@ -4,8 +4,6 @@
 #'
 #' @param .data (sf) The input data to geocode to ASGS
 #' @inheritParams asgs_layer
-#' @param layer (numeric; default = `NULL`) The layer to use if you know the
-#' code. View all available layers with [get_layers()].
 #' @return an [sf::sf()] object containing the ASGS geometry and details
 #' @export
 #' @examples

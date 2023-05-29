@@ -19,8 +19,8 @@ get_layers <- function() {
 
 		tibble::tibble(lay[["layers"]]) |>
 			dplyr::mutate(
-				year = as.numeric(stringr::str_extract(name, "\\d{4}")),
-				geo = tolower(stringr::str_extract(name, "(?<=\\d{4}_).*(?=_)")),
+				year = as.numeric(stringr::str_extract(.data[["name"]], "\\d{4}")),
+				geo = tolower(stringr::str_extract(.data[["name"]], "(?<=\\d{4}_).*(?=_)")),
 				url = url
 			) |>
 			dplyr::select(dplyr::all_of(c("id", "year", "geo", "name", "description", "url")))

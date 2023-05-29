@@ -18,11 +18,13 @@ Imports:
     esri2sf (>= 0.1.1),
     httr,
     lifecycle,
-    magrittr,
+    purrr,
     rlang (>= 0.4.11),
     rvest,
     sf,
-    tibble
+    stringr,
+    tibble,
+    tidyr
 Suggests:
     lintr,
     roxygen2,
