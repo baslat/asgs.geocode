@@ -9,7 +9,7 @@ asgs_layer(year, geo)
 \arguments{
 \item{year}{The year of the ASGS}
 
-\item{geo}{The geographic level (eg sa1, SUA)}
+\item{geo}{The geographic level (eg "sa1", "SUA")}
 }
 \value{
 The ID of the layer
