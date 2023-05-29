@@ -2,7 +2,7 @@
 % Please edit documentation in R/asgs_layer.r
 \name{asgs_layer}
 \alias{asgs_layer}
-\title{Return the ASGS layer ID}
+\title{Return the ASGS server and layer URL}
 \usage{
 asgs_layer(year, geo)
 }
@@ -12,8 +12,9 @@ asgs_layer(year, geo)
 \item{geo}{(character) the geographic level (eg "sa1", "SUA", "lga")}
 }
 \value{
-The ID of the layer
+The server and layer URL
 }
 \description{
-This.
+Give this function a year and a geography and it will return the URL to the
+feature layer. See available year and geographies with \code{\link[=get_layers]{get_layers()}}.
 }
