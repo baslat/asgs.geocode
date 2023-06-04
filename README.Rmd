@@ -42,8 +42,8 @@ address <- "Melbourne Town Hall, Melbourne"
 point <- geocode(address)
 point
 
-# Get the LGA
 lga <- get_asgs(point, 2016, "lga")
+# Get the LGA
 lga
 # See available year-geography layers
 layers <- get_layers()
