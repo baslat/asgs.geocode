@@ -9,9 +9,9 @@
 #' @examples
 #' \dontrun{
 #' melbourne <- geocode("Melbourne Town Hall")
-#' get_asgs(melbourne, 2016, "sa1")
+#' get_asgs(melbourne, "sa1", 2016)
 #' }
-get_asgs <- function(.data, year, geo) {
+get_asgs <- function(.data, geo, year) {
 	# TODO add check or functions to deal with multiple rows
  url <- asgs_layer(year = year, geo = geo)
 

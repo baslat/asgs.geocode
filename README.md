@@ -44,12 +44,12 @@ point
 #>   score match_status address_type                   geometry
 #> 1   100        match PointAddress POINT (144.9666 -37.81506)
 
-# Get the LGA
-lga <- get_asgs(point, 2016, "lga")
+lga <- get_asgs(point, "lga", 2016)
 #> Layer Type: Feature Layer
 #> Geometry Type: esriGeometryPolygon
 #> Service Coordinate Reference System: 3857
 #> Output Coordinate Reference System: 4326
+# Get the LGA
 lga
 #> Simple feature collection with 1 feature and 7 fields
 #> Geometry type: MULTIPOLYGON

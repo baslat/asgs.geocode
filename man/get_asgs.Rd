@@ -4,14 +4,14 @@
 \alias{get_asgs}
 \title{Geocode a point to ASGS}
 \usage{
-get_asgs(.data, year, geo)
+get_asgs(.data, geo, year)
 }
 \arguments{
 \item{.data}{(sf) The input data to geocode to ASGS}
 
-\item{year}{(numeric) the year of the ASGS}
-
 \item{geo}{(character) the geographic level (eg "sa1", "SUA", "lga")}
+
+\item{year}{(numeric) the year of the ASGS}
 }
 \value{
 an \code{\link[sf:sf]{sf::sf()}} object containing the ASGS geometry and details
@@ -22,6 +22,6 @@ This function geocodes an \code{\link[sf:sf]{sf::sf()}} object to the Australian
 \examples{
 \dontrun{
 melbourne <- geocode("Melbourne Town Hall")
-get_asgs(melbourne, 2016, "sa1")
+get_asgs(melbourne, "sa1", 2016)
 }
 }
