@@ -26,7 +26,8 @@ jobs:
                 shell: Rscript {0}
                 run: |
                     pak::pkg_install("devtools")
-                    devtools::install()
+                    message("Installing asgs.geocode with pak")
+                    pak::pkg_install(".")
             -   name: Get news
                 shell: Rscript {0}
                 run: |
