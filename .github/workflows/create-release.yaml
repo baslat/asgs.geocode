@@ -26,8 +26,8 @@ jobs:
                 shell: Rscript {0}
                 run: |
                     install.packages("devtools")
-                    vers <- packageVersion("dspark.api")
-                    out <- utils::news(Version == vers, package = "dspark.api")
+                    vers <- packageVersion("asgs.geocode")
+                    out <- utils::news(Version == vers, package = "asgs.geocode")
                     writeLines(out$Text, con = "changes.md")
             -   name: Get package version
                 run: |
@@ -39,7 +39,7 @@ jobs:
             -   name: Upload Release
                 uses: ncipollo/release-action@v1.12.0
                 with:
-                    artifacts: "dspark.api_${{ env.version }}.tar.gz"
+                    artifacts: "asgs.geocode_${{ env.version }}.tar.gz"
                     name: "${{ env.version }}"
                     bodyFile: changes.md
                     tag: "${{ env.version }}"
