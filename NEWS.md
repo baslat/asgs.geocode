@@ -1,3 +1,5 @@
+# asgs.geocode 0.1.0
+- use vars in CI
 # asgs.geocode 0.0.2
 
 - testing CI with pkgbuild
