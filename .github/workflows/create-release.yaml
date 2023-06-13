@@ -22,10 +22,10 @@ jobs:
                 with:
                     extra-packages: any::rcmdcheck
                     needs: check
-            -   name: Install devtools and package
+            -   name: Install package
                 shell: Rscript {0}
                 run: |
-                    pak::pkg_install(pkg = c("devtools", "."))
+                    pak::pkg_install(pkg = ".")
             -   name: Get news
                 shell: Rscript {0}
                 run: |
@@ -38,7 +38,7 @@ jobs:
             -   name: Build R package
                 shell: Rscript {0}
                 run: |
-                    devtools::build(vignettes = TRUE)
+                    pkgbuild::build(path = ".", vignettes = TRUE)
             -   name: Upload Release
                 uses: ncipollo/release-action@v1.12.0
                 with:
