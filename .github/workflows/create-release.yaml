@@ -11,6 +11,8 @@ permissions: write-all
 jobs:
     upload-release:
         runs-on: ubuntu-latest
+        env:
+            PACKAGE_NAME: asgs.geocode
         steps:
             -   uses: actions/checkout@v3
             -   name: Setup R
@@ -29,12 +31,12 @@ jobs:
             -   name: Get news
                 shell: Rscript {0}
                 run: |
-                    vers <- packageVersion("asgs.geocode")
-                    out <- utils::news(Version == vers, package = "asgs.geocode")
+                    vers <- packageVersion("${{ env.PACKAGE_NAME }}}}")
+                    out <- utils::news(Version == vers, package = "${{ env.PACKAGE_NAME }}")
                     writeLines(out$Text, con = "changes.md")
             -   name: Get package version
                 run: |
-                    echo "version=$(Rscript -e cat\(as.character\(packageVersion\(\"asgs.geocode\"\)\)\))" >> "$GITHUB_ENV"
+                    echo "version=$(Rscript -e cat\(as.character\(packageVersion\(\"${{ env.PACKAGE_NAME }}\"\)\)\))" >> "$GITHUB_ENV"
             -   name: Build R package
                 shell: Rscript {0}
                 run: |
@@ -42,7 +44,7 @@ jobs:
             -   name: Upload Release
                 uses: ncipollo/release-action@v1.12.0
                 with:
-                    artifacts: "asgs.geocode_${{ env.version }}.tar.gz"
+                    artifacts: "${{ PACKAGE_NAME }}_${{ env.version }}.tar.gz"
                     name: "${{ env.version }}"
                     bodyFile: "changes.md"
                     tag: "${{ env.version }}"
