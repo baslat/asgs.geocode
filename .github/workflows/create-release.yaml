@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [main, master]
 
+name: Build and Release
+
 jobs:
     upload-release:
         runs-on: ubuntu-latest
@@ -22,7 +24,7 @@ jobs:
                     needs: check
             -   name: Get package version
                 run: |
-                    echo "version=$(Rscript -e devtools::load\(\) -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
+                    echo "version=$(Rscript -e devtools::load_all\(\) -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
             -   name: Get news
                 shell: Rscript {0}
                 run: |
