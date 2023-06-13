@@ -25,9 +25,7 @@ jobs:
             -   name: Install devtools and package
                 shell: Rscript {0}
                 run: |
-                    pak::pkg_install("devtools")
-                    message("Installing asgs.geocode with pak")
-                    pak::pkg_install(".")
+                    pak::pkg_install(pkg = c("devtools", "."))
             -   name: Get news
                 shell: Rscript {0}
                 run: |
@@ -36,7 +34,7 @@ jobs:
                     writeLines(out$Text, con = "changes.md")
             -   name: Get package version
                 run: |
-                    echo "version=$(Rscript -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
+                    echo "version=$(Rscript -e cat\(as.character\(packageVersion\(\"asgs.geocode\"\)\)\))" >> "$GITHUB_ENV"
             -   name: Build R package
                 shell: Rscript {0}
                 run: |
@@ -46,5 +44,5 @@ jobs:
                 with:
                     artifacts: "asgs.geocode_${{ env.version }}.tar.gz"
                     name: "${{ env.version }}"
-                    bodyFile: changes.md
+                    bodyFile: "changes.md"
                     tag: "${{ env.version }}"
