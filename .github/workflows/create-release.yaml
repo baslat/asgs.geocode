@@ -22,7 +22,7 @@ jobs:
                     needs: check
             -   name: Get package version
                 run: |
-                    echo "version=$(Rscript -e packageVersion("dspark.api"))" >> "$GITHUB_ENV"
+                    echo "version=$(Rscript -e devtools::load\(\) -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
             -   name: Get news
                 shell: Rscript {0}
                 run: |
