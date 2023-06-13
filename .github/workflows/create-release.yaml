@@ -25,7 +25,7 @@ jobs:
             -   name: Install devtools and package
                 shell: Rscript {0}
                 run: |
-                    install.packages("devtools")
+                    pak::pkg_install("devtools")
                     devtools::install()
             -   name: Get news
                 shell: Rscript {0}
