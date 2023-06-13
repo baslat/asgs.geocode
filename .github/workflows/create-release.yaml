@@ -22,15 +22,16 @@ jobs:
                 with:
                     extra-packages: any::rcmdcheck
                     needs: check
-            -   name: Get package version
-                run: |
-                    echo "version=$(Rscript -e devtools::load_all\(\) -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
-            -   name: Get news
+            -   name: Install devtools and get news
                 shell: Rscript {0}
                 run: |
+                    install.packages("devtools")
                     vers <- packageVersion("dspark.api")
                     out <- utils::news(Version == vers, package = "dspark.api")
                     writeLines(out$Text, con = "changes.md")
+            -   name: Get package version
+                run: |
+                    echo "version=$(Rscript -e devtools::load_all\(\) -e packageVersion\(\"asgs.geocode\"\))" >> "$GITHUB_ENV"
             -   name: Build R package
                 shell: Rscript {0}
                 run: |
