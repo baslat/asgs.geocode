@@ -1,3 +1,7 @@
+# asgs.geocode 0.0.2
+
+- testing CI with pkgbuild
+
 # asgs.geocode 0.0.1
 
 - Added CI via GitHub Actions
