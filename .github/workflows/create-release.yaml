@@ -31,7 +31,7 @@ jobs:
             -   name: Get news
                 shell: Rscript {0}
                 run: |
-                    vers <- packageVersion("${{ env.PACKAGE_NAME }}}}")
+                    vers <- packageVersion("${{ env.PACKAGE_NAME }}")
                     out <- utils::news(Version == vers, package = "${{ env.PACKAGE_NAME }}")
                     writeLines(out$Text, con = "changes.md")
             -   name: Get package version
