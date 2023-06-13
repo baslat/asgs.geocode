@@ -1,4 +1,10 @@
-# asgs.geocode (development version)
+# asgs.geocode 0.0.2
+
+- testing CI with pkgbuild
+
+# asgs.geocode 0.0.1
+
+- Added CI via GitHub Actions
 
 # asgs.geocode 0.0.0.9000
 
