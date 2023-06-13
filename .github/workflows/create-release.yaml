@@ -7,7 +7,7 @@ on:
     branches: [main, master]
 
 name: Build and Release
-
+permissions: write-all
 jobs:
     upload-release:
         runs-on: ubuntu-latest
