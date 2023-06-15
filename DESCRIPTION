@@ -14,7 +14,7 @@ Depends:
     R (>= 4.1)
 Imports:
     assertthat,
-    dplyr,
+    dplyr (>= 1.1.2),
     esri2sf (>= 0.1.1),
     httr,
     lifecycle,

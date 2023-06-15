@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_asgs.r
 \name{get_asgs}
 \alias{get_asgs}
-\title{Geocode a point to ASGS}
+\title{Get the ASGS of an \code{sf} object}
 \usage{
 get_asgs(.data, geo, year)
 }
@@ -17,7 +17,8 @@ get_asgs(.data, geo, year)
 an \code{\link[sf:sf]{sf::sf()}} object containing the ASGS geometry and details
 }
 \description{
-This function geocodes an \code{\link[sf:sf]{sf::sf()}} object to the Australian Statistical Geography Standardf.
+This function geocodes an \code{\link[sf:sf]{sf::sf()}} object to the Australian Statistical
+Geography Standard.
 }
 \examples{
 \dontrun{
