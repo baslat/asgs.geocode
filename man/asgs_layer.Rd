@@ -4,12 +4,12 @@
 \alias{asgs_layer}
 \title{Return the ASGS server and layer URL}
 \usage{
-asgs_layer(year, geo)
+asgs_layer(geo, year)
 }
 \arguments{
-\item{year}{(numeric) the year of the ASGS}
-
 \item{geo}{(character) the geographic level (eg "sa1", "SUA", "lga")}
+
+\item{year}{(numeric) the year of the ASGS}
 }
 \value{
 The server and layer URL
