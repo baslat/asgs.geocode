@@ -27,6 +27,7 @@ Imports:
     tidyr
 Suggests:
     lintr,
+    osmdata,
     roxygen2,
     spelling,
     testthat (>= 3.0.0)
