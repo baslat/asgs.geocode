@@ -7,7 +7,7 @@
 osm_bind(
   sf_list,
   types = c("points", "lines", "polygons", "multilines", "multipolygons"),
-  crs = 4326
+  crs = 4326L
 )
 }
 \arguments{
@@ -20,7 +20,7 @@ lines, points, polygons, multilines, multipolygons}
 \item{crs}{(numeric, default = 4326) which CRS should the result be?
 \code{osmdata} returns 4326 by default, but in order to intersect two sfs
 they must have the same crs, and if you are dealing with Australian
-geographies you should be using 7844.}
+geographies you may like to use 7844.}
 }
 \value{
 a \code{sf}

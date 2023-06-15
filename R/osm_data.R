@@ -77,33 +77,20 @@ osm_find <- function(bb, feature_key, feature_values = NULL) {
 #' @param crs (numeric, default = 4326) which CRS should the result be?
 #'   \code{osmdata} returns 4326 by default, but in order to intersect two sfs
 #'   they must have the same crs, and if you are dealing with Australian
-#'   geographies you should be using 7844.
+#'   geographies you may like to use 7844.
 #'
 #' @return a \code{sf}
 #' @export
 #'
 osm_bind <- function(
 	sf_list,
-	types = c(
-		# TODO use rlang::arg_match
-		"points",
-		"lines",
-		"polygons",
-		"multilines",
-		"multipolygons"
-	),
-	crs = 4326
+	types = c("points", "lines", "polygons", "multilines", "multipolygons"),
+	crs = 4326L
 ) { # nolint
 	# Check the inputs
 	assertthat::assert_that(inherits(sf_list, "osmdata"))
-	assertthat::assert_that(all(types %in% c(
-		"points",
-		"lines",
-		"polygons",
-		"multilines",
-		"multipolygons"
-	)))
 
+	types <- rlang::arg_match(types, multiple = TRUE)
 
 	# Add prefix to make names correct
 	types_prefix <- stringr::str_c("osm_", types)
@@ -139,11 +126,9 @@ osm_bind <- function(
          The valid choices for your sf_list are: ", valid_geoms)
 	}
 
-	final_sf <- final_sf |>
+	final_sf |>
 		sf::st_make_valid() |>
 		sf::st_transform(crs = crs)
-
-	return(final_sf)
 }
 
 #' Summarise OpenStreetMap (OSM) features by group
