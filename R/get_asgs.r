@@ -16,9 +16,27 @@ get_asgs <- function(.data, geo, year) {
  url <- asgs_layer(year = year, geo = geo)
 
 	bbox <- sf::st_bbox(.data)
-	esri2sf::esri2sf(url, bbox = bbox) |>
+	# Get the ASGS polygons
+	res_raw <- esri2sf::esri2sf(url, bbox = bbox) |>
 		# Spatial filter to get closer to the initial geometry (ie not its bbox)
 		sf::st_filter(sf::st_transform(.data, crs = 4326L)) |>
 		# Rename all columns to lower
 		dplyr::rename_all(tolower)
+# Silence warning about spatially constant variables
+sf::st_agr(res_raw) <- "constant"
+sf::st_agr(.data) <- "constant"
+# Calculate the overlapping area
+overlaps <- res_raw |>
+	sf::st_intersection(.data) |>
+	dplyr::mutate(intersect_area = sf::st_area(geoms)) |>
+	sf::st_drop_geometry() |>
+	dplyr::summarise(
+		overlapping_area = as.numeric(sum(intersect_area)),
+		.by = objectid
+	)
+
+res_raw |>
+	dplyr::left_join(overlaps, by = dplyr::join_by(objectid)) |>
+	dplyr::mutate(overlapping_pct = overlapping_area / shape_area) |>
+	dplyr::relocate(overlapping_pct, .after = overlapping_area)
 }
