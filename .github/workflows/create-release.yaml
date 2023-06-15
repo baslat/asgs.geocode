@@ -33,7 +33,7 @@ jobs:
                 run: |
                     vers <- packageVersion("${{ env.PACKAGE_NAME }}")
                     out <- utils::news(Version == vers, package = "${{ env.PACKAGE_NAME }}")
-                    writeLines(out$Text, con = "changes.md")
+                    writeLines(out$HTML, con = "changes.md")
             -   name: Get package version
                 run: |
                     echo "version=$(Rscript -e cat\(as.character\(packageVersion\(\"${{ env.PACKAGE_NAME }}\"\)\)\))" >> "$GITHUB_ENV"
