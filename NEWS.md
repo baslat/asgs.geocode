@@ -1,3 +1,7 @@
+# asgs.geocode 0.1.1
+
+- use HTML in changelog. Is `this` code formatted?
+
 # asgs.geocode 0.1.0
 - use vars in CI
 # asgs.geocode 0.0.2
