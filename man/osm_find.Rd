@@ -4,13 +4,15 @@
 \alias{osm_find}
 \title{Query OpenStreetMap (OSM) for features}
 \usage{
-osm_find(bb, feature_key, feature_values = NULL)
+osm_find(bbox, feature_key, feature_values = NULL)
 }
 \arguments{
-\item{bb}{(bounding box) the area to be queried}
+\item{bbox}{(bounding box) the area to be queried. Must have a CRS of
+\code{"+proj=longlat +datum=WGS84"}}
 
-\item{feature_key}{(character) the feature key to query. Feature keys can be
-found here \code{osmdata::available_features()}}
+\item{feature_key}{(character) the feature key to query, for example
+"highway" or "leisure". Feature keys can be found here
+\code{osmdata::available_features()}}
 
 \item{feature_values}{(character; default = \code{NULL}) a vector of feature values to query, passed
 to \code{osmdata::add_osm_feature()}. Use \code{NULL} to return all values

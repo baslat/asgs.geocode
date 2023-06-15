@@ -4,9 +4,11 @@
 #' \href{https://wiki.openstreetmap.org/wiki/Map_features}{here}. Use in
 #' conjunction with \code{osm_bind}.
 #'
-#' @param bb (bounding box) the area to be queried
-#' @param feature_key (character) the feature key to query. Feature keys can be
-#'   found here \code{osmdata::available_features()}
+#' @param bbox (bounding box) the area to be queried. Must have a CRS of
+#' `"+proj=longlat +datum=WGS84"`
+#' @param feature_key (character) the feature key to query, for example
+#' "highway" or "leisure". Feature keys can be found here
+#' \code{osmdata::available_features()}
 #' @param feature_values (character; default = `NULL`) a vector of feature values to query, passed
 #'   to \code{osmdata::add_osm_feature()}. Use \code{NULL} to return all values
 #'   of your feature.
@@ -39,20 +41,20 @@
 #' # View it!
 #' mapview::mapview(feats, zcol = "name")
 #' }
-osm_find <- function(bb, feature_key, feature_values = NULL) {
+osm_find <- function(bbox, feature_key, feature_values = NULL) {
 	# Check for installed package
 	rlang::check_installed("osmdata") # nolint
 
 	# Check CRS of bounding box
-	bb_crs <- sf::st_crs(bb)
+	bbox_crs <- sf::st_crs(bbox)
 
 	assertthat::assert_that(
-		bb_crs[["input"]] == "+proj=longlat +datum=WGS84",
+		bbox_crs[["input"]] == "+proj=longlat +datum=WGS84",
 		msg = "The CRS of your bounding box is incorrect. Use the following code to get a bbox with the CRS OSM requires:\n\nsf::st_transform(sf_object, '+proj=longlat +datum=WGS84') |> sf::st_bbox()\n\n" # nolint
 	)
 
 	# Set the OSM query connection
-	bb |>
+	bbox |>
 		osmdata::opq(timeout = 50L) |>
 		osmdata::add_osm_feature(
 			key = feature_key,
@@ -93,7 +95,7 @@ osm_bind <- function(
 	types <- rlang::arg_match(types, multiple = TRUE)
 
 	# Add prefix to make names correct
-	types_prefix <- stringr::str_c("osm_", types)
+ types_prefix <- paste0("osm_", types)
 
 	# Filter sf_list to just what was requested
 	kept_sf <- sf_list[types_prefix] |>
