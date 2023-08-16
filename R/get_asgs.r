@@ -20,6 +20,8 @@ get_asgs <- function(.data, geo, year) {
 	# Get the ASGS polygons
 	res_raw <- esri2sf::esri2sf(url, bbox = bbox) |>
 		# Spatial filter to get closer to the initial geometry (ie not its bbox)
+		# Need make valid for loops like islands
+		sf::st_make_valid() |>
 		sf::st_filter(sf::st_transform(.data, crs = 4326L)) |>
 		# Rename all columns to lower
 		dplyr::rename_all(tolower)

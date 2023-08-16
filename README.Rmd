@@ -28,24 +28,44 @@ The goal of asgs.geocode is to be able to take an address and get the ASGS code 
 You can install the development version of asgs.geocode from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("baslat/asgs.geocode")
+# install.packages("pak")
+pak::pak("baslat/asgs.geocode")
 ```
 
-## Example
+## Basic Example: Address to ASGS
 
-This is a basic example which shows you how to solve a common problem:
+The primary use case of {asgs.geocode} is to go from an address to an ASGS code. This is done with the `geocode()` and `get_asgs()` functions.
+
+The simplest example is finding the ASGS code for an address or landmark. Let's get the 2021 SA2 of Melbourne Town Hall.
 
 ```{r example}
 library(asgs.geocode)
-## basic example code
+## More specific addresses generally perform better
 address <- "Melbourne Town Hall, Melbourne"
 point <- geocode(address)
 point
 
-lga <- get_asgs(point, "lga", 2016)
-# Get the LGA
-lga
+# It's returned three candidate matches, so let's plot them.
+library(mapview)
+mapview(point)
+
+# They are all in the same place, so let's just take the one with the best (i.e. lowest) rank.
+melb_town_hall <- dplyr::slice_min(point, rank)
+melb_town_hall
+
+
+# Now we can get the ASGS code for this point.
+melb_th_sa2 <- get_asgs(melb_town_hall, "sa2", 2021)
+melb_th_sa2
+
+# And plot the SA2 and the points
+
+mapview(melb_th_sa2) + mapview(melb_town_hall, col.regions = "red")
+```
+
+Other years and geographies (and some limited descriptions) are available with `get_layers()`:
+
+```{r get_layers}
 # See available year-geography layers
 layers <- get_layers()
 layers
