@@ -59,7 +59,6 @@ melb_th_sa2 <- get_asgs(melb_town_hall, "sa2", 2021)
 melb_th_sa2
 
 # And plot the SA2 and the points
-
 mapview(melb_th_sa2) + mapview(melb_town_hall, col.regions = "red")
 ```
 
@@ -70,3 +69,24 @@ Other years and geographies (and some limited descriptions) are available with `
 layers <- get_layers()
 layers
 ```
+
+## Intermediate Example: Points or Polygons to ASGS
+
+We can also also more complex questions, like finding the ASGS code for points or polygon. Let's find the 2016 SA1s of IGA supermarkets in Canberra.
+
+```{r cbr-iga}
+# Set max results to 50 to get all the IGAs
+iga <- geocode("IGA, ACT", 100)
+iga
+
+iga_sa1 <- get_asgs(iga, "sa1", 2016)
+iga_sa1
+
+mapview(iga_sa1) + mapview(iga, col.regions = "red")
+
+
+```
+
+Which SA3s are in an LGA?
+
+What are the SA1s of the Coles in Canberra?

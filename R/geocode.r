@@ -86,7 +86,8 @@ geocode <- function(address, max_results = 5L) {
 			sf::st_sfc(crs = 4326L)
 
 		sf::st_sf(
-			address = x[["address"]],
+			place = x[["address"]],
+			address = x[["attributes"]][["LongLabel"]],
 			rank = x[["attributes"]][["Rank"]],
 			score = score,
 			match_status = match_status,
