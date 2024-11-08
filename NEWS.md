@@ -1,6 +1,6 @@
 # asgs.geocode (development version)
 
-- add ASGS to `mbc2016` data
+- add ASGS to `mbc2016` and `mbc2021` data
 - added `get_asgs()` to get the ASGS of an `sf`
 - added `osm_` family of functions for getting OSM features
 - added CI via GitHub Actions

@@ -7,7 +7,7 @@
 \format{
 \subsection{\code{mbc2021}}{
 
-A data frame with 368,285 rows and 6 variables:
+A data frame with 368,285 rows and 15 variables:
 \describe{
 \item{mb_code_2021}{Meshblock code}
 \item{mb_category}{Meshblock category}
@@ -15,6 +15,7 @@ A data frame with 368,285 rows and 6 variables:
 \item{dwellings}{Count of dwellings}
 \item{persons}{Count of persons usually resident}
 \item{state_code}{State code}
+\item{ASGS identifiers}{Various columns to identify the ASGS hierarchy}
 }
 }
 }
