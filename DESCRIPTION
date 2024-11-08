@@ -1,6 +1,6 @@
 Package: asgs.geocode
 Title: Geocode to the Australian Statistical Geography Standard
-Version: 0.1.1.9001
+Version: 0.1.1.9002
 Authors@R:
     person("Bas", "Latcham", , "bas@latcham.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1733-7350"))
@@ -11,7 +11,7 @@ Description: The Australian Statistical Geography Standard (ASGS) is a
     to geocode addresses, points and polygons to the ASGS.
 License: MIT + file LICENSE
 Depends:
-    R (>= 4.1)
+    R (>= 3.5)
 Imports:
     assertthat,
     dplyr (>= 1.1.2),
@@ -38,4 +38,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2.9000
