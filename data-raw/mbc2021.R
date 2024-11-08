@@ -40,4 +40,18 @@ mbc2021 <- purrr::map(sheets, clean_mb, file = tf) |>
 
 mbc2021
 
+# Get MB to SA1
+url_asgs <- "https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/access-and-downloads/allocation-files/MB_2021_AUST.xlsx"
+
+tf2 <- tempfile(fileext = ".xlsx")
+
+utils::download.file(url_asgs, , destfile = tf2, mode = "wb")
+
+mb_asgs <- readxl::read_excel(tf2) |>
+	janitor::clean_names() |>
+	dplyr::select(mb_code_2021, dplyr::contains("sa"))
+
+mbc2021 <- mbc2021 |>
+ dplyr::left_join(mb_asgs, by = dplyr::join_by(mb_code_2021))
+
 usethis::use_data(mbc2021, overwrite = TRUE)
